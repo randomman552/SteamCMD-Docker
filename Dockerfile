@@ -20,6 +20,7 @@ RUN runuser -l steam -c 'curl -sqL "https://steamcdn-a.akamaihd.net/client/insta
 RUN runuser -l steam -c './steamcmd.sh +quit'
 
 RUN mkdir /server && chown steam:steam /server
+VOLUME /server
 WORKDIR /server
 
 # Copy scripts into container
