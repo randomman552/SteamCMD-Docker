@@ -2,6 +2,11 @@ FROM debian:latest
 ENV PUID=1000 PGID=1000
 ENV APP_ID= START_CMD=
 
+LABEL org.opencontainers.image.source 'https://github.com/randomman552/SteamCMD-Docker'
+LABEL org.opencontainers.image.url 'https://github.com/randomman552/SteamCMD-Docker'
+LABEL org.opencontainers.image.documentation 'https://github.com/randomman552/SteamCMD-Docker/blob/main/README.MD'
+LABEL org.opencontainers.image.title 'SteamCMD'
+
 RUN useradd -m steam -u 1000
 WORKDIR /home/steam
 
