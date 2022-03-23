@@ -15,11 +15,11 @@ echo "----=========Fixing Permissions=========----";
 
 # Install server
 echo "----=============Installing=============----";
-runuser -l steam -c "/scripts/install.sh" -w APP_ID
+su steam -s "/scripts/install.sh"
 
 # Start server
 echo "----==============Starting==============----";
-runuser -l steam -c "/scripts/start.sh" -w *
-echo "----==============Finished==============----";
+su steam -s "/scripts/start.sh"
 
+echo "----==============Finished==============----";
 exit 0
