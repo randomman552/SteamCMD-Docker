@@ -19,7 +19,7 @@ runuser -l steam -c "/scripts/install.sh" -w APP_ID
 
 # Start server
 echo "----==============Starting==============----";
-runuser -l steam -c "/scripts/start.sh" -w START_CMD
+runuser -l steam -c "/scripts/start.sh" -w *
 echo "----==============Finished==============----";
 
 exit 0
