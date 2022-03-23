@@ -2,6 +2,7 @@
 
 # Display splash screen
 cat /scripts/splash.txt
+echo
 
 # Fix permissions
 echo "----=========Fixing Permissions=========----";
