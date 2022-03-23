@@ -15,11 +15,11 @@ echo "----=========Fixing Permissions=========----";
 
 # Install server
 echo "----=============Installing=============----";
-su steam -s "/scripts/install.sh"
+su -s "/scripts/install.sh" -p steam
 
 # Start server
 echo "----==============Starting==============----";
-su steam -s "/scripts/start.sh"
+su -s "/scripts/start.sh" -p steam
 
 echo "----==============Finished==============----";
 exit 0
