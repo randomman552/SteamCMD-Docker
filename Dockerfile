@@ -14,8 +14,8 @@ RUN apt update && apt upgrade -y && apt install -y --no-install-suggests lib32st
 RUN runuser -l steam -c 'curl -sqL "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz" | tar zxvf -'
 RUN runuser -l steam -c './steamcmd.sh +quit'
 
-RUN mkdir /home/server && chown steam:steam /home/server
-WORKDIR /home/server
+RUN mkdir /server && chown steam:steam /server
+WORKDIR /server
 
 # Copy scripts into container
 ADD scripts/* /scripts/

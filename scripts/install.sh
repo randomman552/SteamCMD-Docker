@@ -6,6 +6,6 @@ then
     exit 1;
 fi
 
-/home/steam/steamcmd.sh +force_install_dir "/home/server/" +login anonymous +app_update ${APP_ID} validate +quit;
+/home/steam/steamcmd.sh +force_install_dir "/server/" +login anonymous +app_update ${APP_ID} validate +quit;
 
 exit 0;

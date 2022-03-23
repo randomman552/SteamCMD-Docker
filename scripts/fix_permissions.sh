@@ -1,5 +1,5 @@
 #! /bin/sh
 usermod -u ${PUID} steam
 groupmod -g ${PGID} steam
-chown steam:steam /home/server
+chown steam:steam /server
 exit 0
