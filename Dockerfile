@@ -25,6 +25,6 @@ WORKDIR /server
 
 # Copy scripts into container
 ADD scripts/* /scripts/
-RUN chmod -R +x /scripts
+RUN chmod -R +x /scripts/*.sh
 
 ENTRYPOINT [ "/scripts/entrypoint.sh" ]
