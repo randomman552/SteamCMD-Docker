@@ -1,5 +1,5 @@
 # SteamCMD-Docker
-SteamCMD in a Debian based Docker container\
+SteamCMD in a Debian based Docker container.\
 Designed to be extended by other containers to install specific dedicated servers.\
 For example, I have extended this image to build a [GMod container](https://github.com/randomman552/GMod-Docker)
 
@@ -12,14 +12,11 @@ The file structure within the container is as follows:
 ```
 📁home/
 ├─ 📁steam/
-│  ├─ 📜steamcmd.sh
+│  ├─ 📜steamcmd
 📁server/
-├─ server files here
+├─ Server files here
 📁scripts/
-├─ 📜entrypoint.sh
-├─ 📜fix_permissions.sh
-├─ 📜install.sh
-├─ 📜start.sh
+├─ Scripts here
 ```
 
 If you wish to preserve the installed server between runs, you should create a volume or a bind mount for the `/server` directory.
@@ -59,3 +56,17 @@ services:
         volumes:
             - ./server:/server
 ```
+
+## Extending this image
+This image is designed to be extended to produce environments for other dedicated servers.\
+For example, I have built an image for GMod which can be found [here](https://github.com/randomman552/GMod-Docker).
+
+In order to extend this container you should place any scripts in the `/scripts` directory.\
+These will be executed by `entrypoint.sh` in the order in which they are numbered.\
+These scripts are included by default:
+- `10-install.sh`
+- `20-start.sh`
+
+As an example, if you wanted to run another operation between installing and starting a server, you could add a script numbered as ```15-other-task.sh```.
+
+`steamcmd` can be accessed from any of these scripts by calling ```steamcmd``` as it is on PATH.
