@@ -1,7 +1,9 @@
 # SteamCMD-Docker
 SteamCMD in a Debian based Docker container\
 Designed to be extended by other containers to install specific dedicated servers.\
-Can also be used in a standalone way to install an app to a directory using a volume.
+For example, I have extended this image to build a [GMod container](https://github.com/randomman552/GMod-Docker)
+
+Can also be used in a standalone way to install an app to a directory using a volume or bind mount.
 
 Currently does not support non-anonymous login.
 
