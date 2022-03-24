@@ -1,5 +1,5 @@
 FROM debian:latest
-ENV PUID=1000 PGID=1000
+ENV PUID=1000 PGID=1000 PATH="/home/steam:${PATH}"
 ENV APP_ID= START_CMD=
 
 LABEL org.opencontainers.image.source 'https://github.com/randomman552/SteamCMD-Docker'
@@ -16,8 +16,9 @@ RUN dpkg --add-architecture i386
 RUN apt update && apt upgrade -y && apt install -y --no-install-suggests lib32stdc++6 lib32gcc-s1 curl ca-certificates
 
 # Install steamcmd
-RUN runuser -l steam -c 'curl -sqL "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz" | tar zxvf -'
-RUN runuser -l steam -c './steamcmd.sh +quit'
+RUN su -c 'curl -sqL "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz" | tar zxvf -' -p steam
+RUN mv steamcmd.sh steamcmd
+RUN su -c "steamcmd +quit" -p steam
 
 RUN mkdir /server && chown steam:steam /server
 VOLUME /server
