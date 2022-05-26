@@ -1,28 +1,41 @@
-FROM debian:latest
-ENV PUID=1000 PGID=1000 PATH="/home/steam:${PATH}"
-ENV APP_ID= START_CMD=
+FROM debian
+ENV PUID=1000 \
+    PGID=1000 \
+    PATH="/home/steam:${PATH}" \
+    APP_ID= \
+    START_CMD= 
 
-RUN useradd -m steam -u 1000
+# Copy scripts into container
+ADD scripts /scripts/
+ADD entry.sh splash.txt /
+
+# Add user
+RUN useradd -m steam -u ${PUID}
 WORKDIR /home/steam
 
-RUN dpkg --add-architecture i386
+RUN \
+    # Install dependencies
+        dpkg --add-architecture i386 \
+        && apt-get update \
+        && apt upgrade -y \
+        && apt-get install -y --no-install-recommends --no-install-suggests \
+            ca-certificates \
+            lib32tinfo6 \
+            lib32stdc++6 \
+            curl \
+        && apt clean \
+        && rm -rf /var/lib/apt/lists/* \
+    # Install steamcmd
+        && su -c 'curl -sqL "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz" | tar zxvf -' -p steam \
+        && mv steamcmd.sh steamcmd \
+        && su -c "steamcmd +quit" -p steam \
+    # Make /server directory
+        && mkdir /server \
+        && chown steam:steam /server \
+    # Make scripts executable
+        && chmod -R +x /scripts/*.sh /*.sh
 
-# Install dependencies
-RUN apt update && apt upgrade -y && apt install -y --no-install-suggests lib32stdc++6 lib32gcc-s1 curl ca-certificates
-
-# Install steamcmd
-RUN su -c 'curl -sqL "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz" | tar zxvf -' -p steam
-RUN mv steamcmd.sh steamcmd
-RUN su -c "steamcmd +quit" -p steam
-
-RUN mkdir /server && chown steam:steam /server
 VOLUME /server
 WORKDIR /server
 
-# Copy scripts into container
-ADD scripts/* /scripts/
-ADD entrypoint.sh /
-ADD splash.txt /
-RUN chmod -R +x /scripts/*.sh /entrypoint.sh
-
-ENTRYPOINT [ "/entrypoint.sh" ]
+ENTRYPOINT [ "/entry.sh" ]
