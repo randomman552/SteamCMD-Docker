@@ -69,4 +69,7 @@ These scripts are included by default:
 
 As an example, if you wanted to run another operation between installing and starting a server, you could add a script numbered as ```15-other-task.sh```.
 
-`steamcmd` can be accessed from any of these scripts by calling ```steamcmd``` as it is on PATH.
+`steamcmd` can be accessed from any of these scripts by calling `steamcmd` as it is on PATH.
+
+This image also contains a [healthcheck script](health.sh) which checks whether the server is available on the port specified by the environment variables.\
+This can be replaced to add your own custom health check logic.

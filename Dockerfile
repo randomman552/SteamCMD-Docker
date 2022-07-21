@@ -7,7 +7,7 @@ ENV PUID=1000 \
 
 # Copy scripts into container
 ADD scripts /scripts/
-ADD entry.sh splash.txt /
+ADD health.sh entry.sh splash.txt /
 
 # Add user
 RUN useradd -m steam -u ${PUID}
@@ -23,6 +23,7 @@ RUN \
             lib32tinfo6 \
             lib32stdc++6 \
             curl \
+            net-tools \
         && apt clean \
         && rm -rf /var/lib/apt/lists/* \
     # Install steamcmd
@@ -38,4 +39,5 @@ RUN \
 VOLUME /server
 WORKDIR /server
 
+HEALTHCHECK CMD [ "/health.sh" ]
 ENTRYPOINT [ "/entry.sh" ]
