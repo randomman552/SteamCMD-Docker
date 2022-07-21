@@ -7,7 +7,7 @@ ENV PUID=1000 \
 
 # Copy scripts into container
 ADD scripts /scripts/
-ADD health.sh entry.sh splash.txt /
+ADD *.sh splash.txt /
 
 # Add user
 RUN useradd -m steam -u ${PUID}

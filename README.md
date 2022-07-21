@@ -73,3 +73,5 @@ As an example, if you wanted to run another operation between installing and sta
 
 This image also contains a [healthcheck script](health.sh) which checks whether the server is available on the port specified by the environment variables.\
 This can be replaced to add your own custom health check logic.
+
+The [perms.sh](perms.sh) file can also be replaced if there are additional directories which you want to ensure are owned by the correct user and group.

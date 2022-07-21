@@ -5,9 +5,7 @@ echo
 
 # Fix permissions
 echo "----=========Fixing Permissions=========----";
-usermod -u ${PUID} steam
-groupmod -g ${PGID} steam
-chown steam:steam /server
+sh /perms.sh
 
 # Execute scripts in order
 echo "----==========Executing scripts=========----";
