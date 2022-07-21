@@ -14,7 +14,7 @@ echo "----==========Executing scripts=========----";
 for s in /scripts/*.sh;
 do
     echo "----====$s====----"
-    runuser -u steam -g root "$s"
+    runuser -u steam -g steam "$s"
 done
 
 echo "----==============Finished==============----";
