@@ -3,7 +3,8 @@ ENV PUID=1000 \
     PGID=1000 \
     PATH="/home/steam:${PATH}" \
     APP_ID= \
-    START_CMD= 
+    START_CMD= \
+    VALIDATE=true
 
 # Copy scripts into container
 ADD scripts /scripts/

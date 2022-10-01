@@ -6,6 +6,19 @@ then
     exit 1;
 fi
 
-steamcmd +force_install_dir "/server/" +login anonymous +app_update ${APP_ID} validate +quit;
+# Assemble arguments
+ARGS="+force_install_dir \"/server/\" +login anonymous +app_update ${APP_ID}"
+
+# Add validation if requested
+if [ ! -z "$VALIDATE" ]
+then
+    ARGS="${ARGS} validate"
+fi
+
+# Add +quit to close steamcmd after download completes
+ARGS="${ARGS} +quit"
+
+# Execute steamcmd
+steamcmd $ARGS;
 
 exit 0;

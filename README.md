@@ -23,12 +23,13 @@ If you wish to preserve the installed server between runs, you should create a v
 
 ## Environment variables
 Provides the following environment variables for configuration:
-| Variable  | Default value | Description                                        |
-|:---------:|:-------------:|:--------------------------------------------------:|
-| PUID      | 1000          | ID of user SteamCMD and the server will be run as  |
-| PGID      | 1000          | ID of group SteamCMD and the server will be run as |
-| APP_ID    |               | ID of app to install                               |
-| START_CMD |               | Command used to start server once installed        |
+| Variable  | Default value | Description                                                           |
+|:---------:|:-------------:|:---------------------------------------------------------------------:|
+| PUID      | 1000          | ID of user SteamCMD and the server will be run as                     |
+| PGID      | 1000          | ID of group SteamCMD and the server will be run as                    |
+| VALIDATE  | true          | Whether to validate the server on install. If unset will not validate |
+| APP_ID    |               | ID of app to install                                                  |
+| START_CMD |               | Command used to start server once installed                           |
 
 ## Running
 As an example, I will be using this container to run an unmodded gmod server.\
