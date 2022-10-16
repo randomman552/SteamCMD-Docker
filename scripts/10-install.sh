@@ -19,6 +19,6 @@ fi
 ARGS="${ARGS} +quit"
 
 # Execute steamcmd
-steamcmd $ARGS;
+eval steamcmd $ARGS;
 
 exit 0;
