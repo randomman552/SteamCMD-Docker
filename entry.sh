@@ -1,4 +1,7 @@
 #! /bin/sh
+# Trap any SIGINT and SIGTERM Kill all child processes when recieved
+trap "trap '' TERM; kill 0; wait" INT TERM
+
 # Display splash screen
 cat /splash.txt
 echo
