@@ -6,10 +6,6 @@ ENV PUID=1000 \
     START_CMD= \
     VALIDATE=true
 
-# Copy scripts into container
-ADD scripts /scripts/
-ADD *.sh splash.txt /
-
 # Add user
 RUN useradd -m steam -u ${PUID}
 WORKDIR /home/steam
@@ -33,9 +29,12 @@ RUN \
         && su -c "steamcmd +quit" -p steam \
     # Make /server directory
         && mkdir /server \
-        && chown steam:steam /server \
-    # Make scripts executable
-        && chmod -R +x /scripts/*.sh /*.sh
+        && chown steam:steam /server
+
+# Copy scripts into container
+ADD scripts /scripts/
+ADD *.sh splash.txt /
+RUN chmod -R +x /scripts/*.sh /*.sh
 
 VOLUME /server
 WORKDIR /server
