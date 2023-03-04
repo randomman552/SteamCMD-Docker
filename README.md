@@ -1,4 +1,7 @@
 # SteamCMD-Docker
+**THIS REPOSITORY IS NOW ARCHIVED**\
+I suggest the following as a replacement: [steamcmd](https://github.com/steamcmd/docker).
+
 SteamCMD in a Debian based Docker container.\
 Designed to be extended by other containers to install specific dedicated servers.\
 For example, I have extended this image to build a [GMod container](https://github.com/randomman552/GMod-Docker)
